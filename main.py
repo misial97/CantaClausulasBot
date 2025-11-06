@@ -1,5 +1,5 @@
 from datetime import datetime, timezone, timedelta
-
+from logger import logger
 from dotenv import load_dotenv
 load_dotenv()
 from dedupsql import ensure_db, event_id_for, is_seen, mark_seen
@@ -8,7 +8,7 @@ from telegram_bot import send_message, format_clause_message
 
 
 def run_once() -> None:
-    print("Searching new clauses...")
+    logger.info("Searching new clauses...")
 
     token = get_biwenger_token()
     mv = get_clause_movements(token)
@@ -25,12 +25,12 @@ def run_once() -> None:
             seller = mov_detail.from_.name
             player_detail = get_player_detail(mov_detail.player, token)
             msg = format_clause_message(buyer, seller, player_detail, mov_detail.amount, movement.date_dt)
-            print("Sending message:", msg)
+            logger.info("Sending message:", msg)
             # Aquí podrías aplicar filtros (propio equipo, lista blanca/negra, etc.)
             send_message(msg)
             mark_seen(eid, movement.date)
 
-    print("Finished searching new clauses in this iteration...")
+    logger.info("Finished searching new clauses in this iteration...")
 
 
 def is_recent(event_ts: int, window_minutes: int = 10) -> bool:

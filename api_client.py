@@ -1,5 +1,7 @@
 import os
 import requests
+
+from logger import logger
 from models import MovementsResponse, PlayerResponse
 
 BIW_USERNAME = os.getenv("BIW_USERNAME")
@@ -23,10 +25,10 @@ def get_biwenger_token() -> str | None:
     body = {"email":BIW_USERNAME, "password":BIW_PASSWORD}
     response = requests.post(GET_TOKEN_URL, json=body)
     if response.ok:
-        print("Login done!")
+        logger.info("Login done!")
         return response.json()["token"]
     else:
-        print("Error:", response.text)
+        logger.info("Error:", response.text)
         return None
 
 
@@ -39,7 +41,7 @@ def get_clause_movements(token: str) -> MovementsResponse:
 
     if mv.status != 200:
         raise ApiError(f"API status != 200: {mv.status}")
-    print("Movements found!")
+    logger.info("Movements found!")
     return mv
 
 
@@ -54,10 +56,10 @@ def get_player_detail(player_id: int, token: str) -> PlayerResponse | None:
         raise ApiError(f"HTTP {response.status_code}: {response.text[:200]}") from e
 
     if response.ok:
-        print("Player found!")
+        logger.info("Player found!")
         return PlayerResponse.model_validate(response.json(), strict=False)
     else:
-        print("Error:", response.text)
+        logger.info("Error:", response.text)
         return None
 
 def generate_headers(token : str) -> dict[str, str]:

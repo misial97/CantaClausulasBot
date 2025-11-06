@@ -19,7 +19,7 @@ async def worker_loop():
         try:
             await asyncio.to_thread(run_once)
         except Exception as e:
-            print("Worker error:", e)
+            logger.info("Worker error:", e)
         await asyncio.sleep(RUN_INTERVAL_SEC)
 
 @app.on_event("startup")
