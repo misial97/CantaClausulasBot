@@ -10,6 +10,10 @@ load_dotenv()
 RUN_INTERVAL_SEC = int(os.getenv("RUN_INTERVAL_SEC", "30"))
 _running = True
 
+@app.head("/health")
+def health():
+    return {"ok": True}
+
 @app.get("/health")
 def health():
     return {"ok": True}
