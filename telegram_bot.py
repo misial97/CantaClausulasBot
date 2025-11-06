@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Miguel Sierra
+# Licensed under the MIT License. See LICENSE file in the project root for full license text.
+
 import os, time, requests, threading
 
 from models import PlayerResponse
