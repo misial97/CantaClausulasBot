@@ -1,6 +1,7 @@
 import os, asyncio, signal
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from logger import logger
 from main import run_once
 
 app = FastAPI()
