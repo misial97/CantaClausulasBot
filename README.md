@@ -24,9 +24,27 @@ El bot incluye:
 ## 🧩 Estructura del proyecto
 
 
+
+```markdown
+|   Archivo / Carpeta   |               Descripción                |
+|-----------------------|------------------------------------------|
+| `main.py`             | 🧠 Lógica principal (función `run_once`) |
+| `api_client.py`       | 🌐 Llamadas a la API de Biwenger         |
+| `telegram_bot.py`     | 💬 Envío de mensajes a Telegram          |
+| `dedup.py`            | ♻️ Deduplicación y filtro por fecha       |
+| `config.py`           | ⚙️ Carga y gestión de variables `.env`    |
+| `logger.py`           | 🪵 Configuración de logs                 |
+| `models/`             | 📦 Modelos de datos del bot              |
+| `models/movement.py`  | 🧩 Modelos Pydantic de movimientos       |
+| `utils/time_utils.py` | ⏰ Funciones para fechas y formateo      |
+| `requirements.txt`    | 📦 Lista de dependencias                 |
+| `Dockerfile`          | 🐳 Config de imagen para despliegue      |
+| `.env`                | 🔑 Ejemplo de configuración de entorno   |
+| `README.md`           | 📘 Documentación del proyecto            |
+
+```
+
 ---
-
-
 
 ## ⚙️ Prerequisitos
 
