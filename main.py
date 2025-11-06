@@ -25,7 +25,7 @@ def run_once() -> None:
             seller = mov_detail.from_.name
             player_detail = get_player_detail(mov_detail.player, token)
             msg = format_clause_message(buyer, seller, player_detail, mov_detail.amount, movement.date_dt)
-            logger.info("Sending message:", msg)
+            logger.info("Sending message: " + msg)
             # Aquí podrías aplicar filtros (propio equipo, lista blanca/negra, etc.)
             send_message(msg)
             mark_seen(eid, movement.date)

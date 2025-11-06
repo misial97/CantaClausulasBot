@@ -28,7 +28,7 @@ def get_biwenger_token() -> str | None:
         logger.info("Login done!")
         return response.json()["token"]
     else:
-        logger.info("Error:", response.text)
+        logger.info("Error: " + response.text)
         return None
 
 
@@ -59,7 +59,7 @@ def get_player_detail(player_id: int, token: str) -> PlayerResponse | None:
         logger.info("Player found!")
         return PlayerResponse.model_validate(response.json(), strict=False)
     else:
-        logger.info("Error:", response.text)
+        logger.info("Error: " + response.text)
         return None
 
 def generate_headers(token : str) -> dict[str, str]:
