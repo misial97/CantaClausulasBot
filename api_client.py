@@ -4,17 +4,19 @@ import requests
 from logger import logger
 from models import MovementsResponse, PlayerResponse
 
+X_LEAGUE_HEADER = os.getenv("X_LEAGUE_HEADER")
+X_LEAGUE_HEADER_VALUE = os.getenv("X_LEAGUE_HEADER_VALUE")
+X_USER_HEADER = os.getenv("X_USER_HEADER")
+X_USER_HEADER_VALUE = os.getenv("X_USER_HEADER_VALUE")
+
 BIW_USERNAME = os.getenv("BIW_USERNAME")
 BIW_PASSWORD = os.getenv("BIW_PASSWORD")
 
 GET_TOKEN_URL = os.getenv("GET_TOKEN_URL")
 MOVEMENTS_URL = os.getenv("GET_CLAUSES_MOVEMENTS_URL")
-GET_PLAYER_DETAIL = os.getenv("GET_PLAYER_DETAIL")
+MOVEMENTS_URL.replace("$League_Id", X_LEAGUE_HEADER_VALUE)
 
-X_LEAGUE_HEADER = os.getenv("X_LEAGUE_HEADER")
-X_LEAGUE_HEADER_VALUE = os.getenv("X_LEAGUE_HEADER_VALUE")
-X_USER_HEADER = os.getenv("X_USER_HEADER")
-X_USER_HEADER_VALUE = os.getenv("X_USER_HEADER_VALUE")
+GET_PLAYER_DETAIL = os.getenv("GET_PLAYER_DETAIL")
 
 
 class ApiError(RuntimeError):
