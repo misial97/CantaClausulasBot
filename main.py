@@ -1,6 +1,4 @@
-import os
 from datetime import datetime, timezone, timedelta
-from time import sleep
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -46,6 +44,4 @@ def is_recent(event_ts: int, window_minutes: int = 10) -> bool:
 
 if __name__ == "__main__":
     ensure_db()
-    while True:
-        run_once()
-        sleep(30)
+    run_once()
