@@ -13,7 +13,7 @@ MADRID_TZ = zoneinfo.ZoneInfo("Europe/Madrid")
 class Team(BaseModel):
     id: int
     name: str
-    icon: str
+    icon: Optional[str] = None
 
 
 class ClauseEntry(BaseModel):
